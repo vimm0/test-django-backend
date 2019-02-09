@@ -1,0 +1,4 @@
+django
+django-tenant-schemas
+django-rest-framework
+django-cors-headers

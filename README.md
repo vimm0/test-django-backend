@@ -1,5 +1,7 @@
 #### Test Django Critial Functionalities
 
+environment
+tdb
 Freenome free domain name
 nepexgroup.tk 
 80.80.80.80
