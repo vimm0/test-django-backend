@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.nepexgroup.tk']
 
 AUTH_PASSWORD_VALIDATORS = []
 
@@ -20,9 +20,9 @@ MEDIA_URL = '/media/'
 
 # TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
-MIDDLEWARE += [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
+# MIDDLEWARE += [
+#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+# ]
 
 INTERNAL_IPS = '127.0.0.1'
 
