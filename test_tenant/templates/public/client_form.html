@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registration{% endblock %}
+{% block content %}
+    <br>
+    Registration may take some time based on queue and you will be notified on successful registration
+    <form method="post">
+        {% csrf_token %}
+        *.nepexgroup.tk
+        {{ form|crispy }}
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
