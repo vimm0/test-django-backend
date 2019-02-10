@@ -16,20 +16,20 @@ SHARED_APPS = (
     'django.contrib.contenttypes',
 
     # everything below here is optional
-    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
 )
 
 TENANT_APPS = (
+    'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
 
     'rest_framework.authtoken',
 
     # your tenant-specific apps
-    # 'apps.users',
+    'apps.blog',
 )
 
 INSTALLED_APPS = [
@@ -50,17 +50,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'crispy_forms',
 
-    # 'autofixture',
-
     # apps
-    # 'apps.account',
-    # 'apps.core',
-    # 'apps.users',
-    # 'apps.hr',
-    # 'apps.inventory',
-    # 'apps.project',
-    # 'apps.ticket',
-    # 'apps.payroll'
+    'apps.blog',
 ]
 
 MIDDLEWARE = [
@@ -115,20 +106,27 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
+
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS': 'nerp.utils.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 25,
-    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',  # For Browsable API
+        # 'rest_framework.authentication.TokenAuthentication',  # For Frontend(Token based)
     ),
+    # 'DEFAULT_PAGINATION_CLASS': 'dsis.utils.pagination.PageNumberPagination',
+    #
+    # 'PAGE_SIZE': 10,
+    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.IsAuthenticated'
+    ],
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-
-    ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.TokenAuthentication',
-    # )
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
 }
 
 LANGUAGE_CODE = 'en-us'

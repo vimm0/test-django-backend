@@ -3,7 +3,7 @@ from .base import *
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.nepexgroup.tk']
-
+ORGANIZATION_ADMIN = 'nepexgroup.tk'
 AUTH_PASSWORD_VALIDATORS = []
 
 STATIC_URL = '/static/'
@@ -48,19 +48,23 @@ DATABASES = {
 }
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS': 'nerp.utils.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 25,
-    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_PERMISSION_CLASSES': (
-        # 'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.AllowAny',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',  # For Browsable API
+        # 'rest_framework.authentication.TokenAuthentication',  # For Frontend(Token based)
     ),
+    # 'DEFAULT_PAGINATION_CLASS': 'dsis.utils.pagination.PageNumberPagination',
+    #
+    # 'PAGE_SIZE': 10,
+    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    # Use Django's standard `django.contrib.autlh` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.IsAuthenticated'
+    ],
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
     )
 }
