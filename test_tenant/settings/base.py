@@ -11,7 +11,7 @@ SECRET_KEY = 's0!=6i7rzn-vkzrbxs@dwl*a5@15n!$(wp#pk!%h+0gkav)b43'
 
 SHARED_APPS = (
     'tenant_schemas',  # mandatory, should always be before any django app
-    'apps.customer', # you must list the app where your tenant model resides in
+    'apps.customer',  # you must list the app where your tenant model resides in
 
     'django.contrib.contenttypes',
 
@@ -21,7 +21,6 @@ SHARED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
 )
-
 
 TENANT_APPS = (
     'django.contrib.admin',
@@ -62,10 +61,6 @@ INSTALLED_APPS = [
     # 'apps.payroll'
 ]
 
-TENANT_MODEL = 'customer.Client'
-
-SITE_ID = 1
-
 MIDDLEWARE = [
     'tenant_schemas.middleware.TenantMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,13 +72,17 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
+SITE_ID = 1
+TENANT_MODEL = 'customer.Client'
 ROOT_URLCONF = 'test_tenant.urls'
+PUBLIC_SCHEMA_URLCONF = 'test_tenant.urls_public'
+DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'  # tenant
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
