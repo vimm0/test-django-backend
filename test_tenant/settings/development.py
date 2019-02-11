@@ -8,39 +8,17 @@ AUTH_PASSWORD_VALIDATORS = []
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, '..', '..', 'static')
-#
-# MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
 MEDIA_URL = '/media/'
-
-# INSTALLED_APPS += (
-#     'debug_toolbar',
-#     # 'django_extensions',
-# )
-
-# TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
-
-# MIDDLEWARE += [
-#     'debug_toolbar.middleware.DebugToolbarMiddleware',
-# ]
 
 INTERNAL_IPS = '127.0.0.1'
 
-WEBPACK_ASSET_JSON = os.path.join(BASE_DIR, '../assets.json')
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
-#     }
-# }
-
+# https://stackoverflow.com/questions/26598738/how-to-create-user-database-in-script-for-docker-postgres
 DATABASES = {
     'default': {
         'ENGINE': 'tenant_schemas.postgresql_backend',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
+        'NAME': 'postgres',  # set postgres database by default docker
+        'USER': 'postgres',  # set postgres user by default docker
+        # 'PASSWORD': 'password',
         'HOST': 'db',  # set in docker-compose.yml
         'PORT': 5432,  # default postgres port
         'ATOMIC_REQUESTS': True,
