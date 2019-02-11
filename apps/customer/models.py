@@ -4,6 +4,7 @@ from tenant_schemas.models import TenantMixin
 
 class Client(TenantMixin):
     name = models.CharField(max_length=100)
+    # fe_url
     # is_active
     # subscription
     # paid_until
