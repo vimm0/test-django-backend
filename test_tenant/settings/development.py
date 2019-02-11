@@ -41,8 +41,8 @@ DATABASES = {
         'NAME': 'test',
         'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'db',  # set in docker-compose.yml
+        'PORT': 5432,  # default postgres port
         'ATOMIC_REQUESTS': True,
     }
 }
