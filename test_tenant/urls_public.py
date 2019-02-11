@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import path
 from django.views.generic import TemplateView
 
-from apps.blog.admin import tenant_admin_site
+# from apps.blog.admin import tenant_admin_site
 from apps.customer.forms import ClientForm
 
 
@@ -54,6 +54,5 @@ urlpatterns = [
     path('pricing/', PricingPage.as_view(), name='pricing-model'),
     path('client-registration/', client_registration_page, name='client-registration'),
     path('thanks/', ThanksPage.as_view(), name='thanks'),
-    path('nepex/tenant-admin/', tenant_admin_site.urls),
 
 ]

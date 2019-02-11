@@ -3,7 +3,7 @@ from .base import *
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.nepexgroup.tk']
-ORGANIZATION_ADMIN = 'nepexgroup.tk'
+ORGANIZATION_ADMIN = 'nepex.nepexgroup.tk'
 AUTH_PASSWORD_VALIDATORS = []
 
 STATIC_URL = '/static/'

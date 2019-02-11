@@ -18,6 +18,7 @@ from django.contrib.auth.views import LogoutView, LoginView
 from django.urls import path, include
 from rest_framework import routers
 
+from apps.blog.admin import tenant_admin_site
 from apps.blog.api import ArticleViewSet
 
 router = routers.DefaultRouter()
@@ -28,5 +29,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('login/', LoginView.as_view(), name='rest_login'),
     path('logout/', LogoutView.as_view(), name='rest_logout'),
+    path('nepex/tenant-admin/', tenant_admin_site.urls),
 
 ]

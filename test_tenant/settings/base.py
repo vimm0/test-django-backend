@@ -30,6 +30,7 @@ TENANT_APPS = (
 
     # your tenant-specific apps
     'apps.blog',
+    'apps.user',
 )
 
 INSTALLED_APPS = [
@@ -52,6 +53,8 @@ INSTALLED_APPS = [
 
     # apps
     'apps.blog',
+    'apps.user',
+
 ]
 
 MIDDLEWARE = [
@@ -67,6 +70,7 @@ MIDDLEWARE = [
 
 SITE_ID = 1
 TENANT_MODEL = 'customer.Client'
+AUTH_USER_MODEL = 'user.CustomUser'
 ROOT_URLCONF = 'test_tenant.urls'
 PUBLIC_SCHEMA_URLCONF = 'test_tenant.urls_public'
 DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'  # tenant
